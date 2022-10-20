@@ -1,0 +1,12 @@
+<div id="favorite_book_<%= book.id %>">
+    <% if favorite = book.favorite.find_by(user_id: current_user.id) %>
+      <%= link_to  book_favorite_path(book.id), method: :delete, remote: true, style: "color: red;" do %>
+        <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+      <% end %>
+    <% else %>
+      <%= link_to  book_favorite_path(book), method: :post, remote: true do %>
+        <i class="fas fa-heart" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+    <%= book.favorite.size %>
+</div>
