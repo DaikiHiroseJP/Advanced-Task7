@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update]
+  before_action :set_user, only: [:followings, :followers]
 
   def show
     @user = User.find(params[:id])
@@ -28,6 +29,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def followings
+    @users = @user.followings
+  end
+
+  def followers
+    @users = @user.followers
+  end
+
   private
 
   def user_params
@@ -47,5 +56,9 @@ class UsersController < ApplicationController
     if(user_id != login_user_id)
       redirect_to current_user
     end
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
