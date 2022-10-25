@@ -13,7 +13,8 @@ class RoomsController < ApplicationController
       if Entry.where(:user_id => current_user.id, :room_id => @room.id).present?
         @messages = @room.messages
         @message = Message.new
-        @entries = @room.entries
+        @partner_entry = Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
+        @user = @partner_entry.first.user
       else
         redirect_back(fallback_location: root_path)
       end
