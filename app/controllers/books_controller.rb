@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     end
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)
-     if @user.id == current_user.id
+    if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
@@ -33,13 +33,12 @@ class BooksController < ApplicationController
   def index
     to  = Time.current.at_end_of_day
     from  = (to - 6.day).at_beginning_of_day
-    @books = Book.where(created_at: from...to).includes(:favorited_users).
-    sort {|a,b|
-      b.favorited_users.includes(:favorite).size <=>
-      a.favorited_users.includes(:favorite).size
+    @books = Book.includes(:favorited_users).sort {|a,b|
+      b.favorite.where(created_at: from...to).size <=>
+      a.favorite.where(created_at: from...to).size
     }
     @book = Book.new
-    
+
   end
 
   def create
