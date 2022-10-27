@@ -38,10 +38,11 @@
       <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
     <% end %>
   <% end %>
+
   <% if user.id == current_user.id %>
   <% else %>
     <% if isRoom == true %>
-      <p><a href="/rooms/<%= roomId %>">chatを始める</a>
+    <a class="ml-3 mt-1" href="/rooms/<%= roomId %>">chatを始める</a>
     <% else %>
       <%= form_for room do |f| %>
         <%= fields_for entry do |e| %>
