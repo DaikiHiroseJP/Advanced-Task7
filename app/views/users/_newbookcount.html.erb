@@ -74,6 +74,7 @@
 <canvas id="myChart" width="300" height="150"> </canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script>
+    $(document).on('turbolinks:load', function() {
     var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -85,7 +86,27 @@
                 backgroundColor: 'rgba(0, 128, 255, 1.0)',
                 borderColor: 'rgba(0, 128, 255, 1.0)',
                 fill: false
-            }]
+            }
+          ],
         },
+        options: {
+          title: {
+            display: true,
+            text: '7日間の投稿数の比較'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                suggestedMax: 10,
+                suggestedMin: 0,
+                stepSize: 1,
+                callback: function(value, index, values){
+                  return  value
+                }
+              }
+            }]
+          },
+        }
+      });
     });
 </script>
