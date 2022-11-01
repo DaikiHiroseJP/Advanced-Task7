@@ -4,5 +4,5 @@ class Team < ApplicationRecord
 
   validates :name, presence: true
   validates :outline, presence: true
-  has_one_attached :image
+  has_one_attached :team_image
 end

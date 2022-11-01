@@ -2,6 +2,11 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
 
+  def index
+    @book = Book.new
+    @teams = Team.all
+  end
+
   def show
     @book = Book.new
     @team = Team.find(params[:id])
@@ -36,7 +41,7 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name, :outline, :image)
+    params.require(:team).permit(:name, :outline, :team_image)
   end
 
   def ensure_correct_user
