@@ -27,10 +27,11 @@ class TeamsController < ApplicationController
   end
 
   def edit
-
+    is_matching_login_user
   end
 
   def update
+    is_matching_login_user
     if @team.update(team_params)
       redirect_to teams_path
     else
@@ -48,6 +49,14 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     unless @team.owner_id = current_user.id
       redirect_to teams_path
+    end
+  end
+
+  def is_matching_login_user
+    owner_id = params[:id].to_i
+    login_user_id = current_user.id
+    if(owner_id != login_user_id)
+      redirect_to current_user
     end
   end
 end
