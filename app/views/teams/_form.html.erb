@@ -1,0 +1,20 @@
+<%= form_with model: team, local: true do |f| %>
+  <div class="form-team mt-md-3">
+    <%= f.label :グループ名 %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-team mt-md-3">
+    <%= f.label :紹介文 %>
+    <%= f.text_area :outline, class: 'form-control' %>
+  </div>
+
+  <div class="form-team mt-md-3">
+    <%= f.label :グループ画像 %>
+    <%= f.file_field :image, class: "form-control-file" %>
+  </div>
+
+  <div class="form-team mt-md-3">
+    <%= f.submit "Create Group", class: 'btn btn-info' %>
+  </div>
+<% end %>
