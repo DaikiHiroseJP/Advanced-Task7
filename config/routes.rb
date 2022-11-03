@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:show,:create]
-  resources :teams, only: [:index, :show, :edit, :create, :update, :new, :show]
+  resources :teams, only: [:index, :show, :edit, :create, :update, :new, :show] do
+    get "join" => "team#join"
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
