@@ -23,6 +23,7 @@
               <td><%= image_tag team.team_image, size:'50x50' %></td>
               <td><%= link_to team.name, team_path(team) %></td>
               <td><%= team.outline %></td>
+              <td><%= team.users.count %></td>
               <td>
                 <% if team.owner_id == current_user.id %>
                   <%= link_to 'Edit', edit_team_path(team), class: "btn btn-sm btn-success" %>

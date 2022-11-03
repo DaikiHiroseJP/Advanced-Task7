@@ -11,6 +11,12 @@ class TeamsController < ApplicationController
     @book = Book.new
     @team = Team.find(params[:id])
   end
+  
+  def join
+    @team = Team.find(params[:team_id])
+    @team.users << current_user
+    redirect_to teams_path
+  end
 
   def new
     @team = Team.new
@@ -19,6 +25,7 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.owner_id = current_user.id
+    @teams.users << current_user
     if @team.save
       redirect_to teams_path
     else
@@ -37,6 +44,12 @@ class TeamsController < ApplicationController
     else
       render "edit"
     end
+  end
+  
+  def destroy
+    @team = Group.find(params[:id])
+    @team.users.delete(current_user)
+    redirect_to teams_path
   end
 
   private

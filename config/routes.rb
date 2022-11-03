@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:show,:create]
-  resources :teams, only: [:index, :show, :edit, :create, :update, :new, :show] do
+  resources :teams do
     get "join" => "team#join"
   end
 
