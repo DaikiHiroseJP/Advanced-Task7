@@ -52,6 +52,7 @@ class TeamsController < ApplicationController
     redirect_to teams_path
   end
 
+
   private
 
   def team_params
