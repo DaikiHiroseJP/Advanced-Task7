@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:show,:create]
   resources :teams do
-    get "join" => "team#join"
+    get "join" => "teams#join"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

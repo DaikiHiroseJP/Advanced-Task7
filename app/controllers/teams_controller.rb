@@ -47,7 +47,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team = Group.find(params[:id])
+    @team = Team.find(params[:id])
     @team.users.delete(current_user)
     redirect_to teams_path
   end

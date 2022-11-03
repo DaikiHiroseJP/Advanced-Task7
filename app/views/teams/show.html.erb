@@ -24,6 +24,11 @@
             <td><%= @team.name %></td>
             <td><%= @team.outline %></td>
             <td>
+              <% @team.users.each do |member| %>
+                <%= member.name %><br>
+              <% end %>
+            </td>
+            <td>
               <% if @team.owner_id == current_user.id %>
                 <%= link_to 'Edit', edit_team_path(@team), class: "btn btn-sm btn-success" %>
               <% elsif @team.users.include?(current_user) %>
