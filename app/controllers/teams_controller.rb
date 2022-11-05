@@ -51,7 +51,7 @@ class TeamsController < ApplicationController
     @team.users.delete(current_user)
     redirect_to teams_path
   end
-  
+
   def new_mail
     @team = Team.find(params[:team_id])
   end
