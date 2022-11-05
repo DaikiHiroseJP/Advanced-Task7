@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :messages, only: [:show,:create]
   resources :teams do
     get "join" => "teams#join"
+    get "new/mail" => "teams#new_mail"
+    get "send/mail" => "teams#send_mail"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

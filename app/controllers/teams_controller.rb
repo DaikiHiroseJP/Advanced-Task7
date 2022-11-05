@@ -51,6 +51,18 @@ class TeamsController < ApplicationController
     @team.users.delete(current_user)
     redirect_to teams_path
   end
+  
+  def new_mail
+    @team = Team.find(params[:team_id])
+  end
+
+  def send_mail
+    @team = Team.find(params[:team_id])
+    team_users = @team.users
+    @mail_title = params[:mail_title]
+    @mail_content = params[:mail_content]
+    ContactMailer.send_mail(@mail_title, @mail_content,team_users).deliver
+  end
 
 
   private

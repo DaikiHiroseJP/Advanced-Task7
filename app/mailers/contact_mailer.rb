@@ -1,7 +1,7 @@
 class ContactMailer < ApplicationMailer
-  def send_when_admin_reply(user, contact) 
-    @user = user 
-    @answer = contact.reply_text 
-    mail to: user.email, subject: '【サイト名】 お問い合わせありがとうございます'
+  def send_mail(mail_title,mail_content,group_users) #メソッドに対して引数を設定
+    @mail_title = mail_title
+    @mail_content = mail_content
+    mail bcc: group_users.pluck(:email), subject: mail_title
   end
 end
