@@ -1,0 +1,16 @@
+<div id="post_raty"></div>
+  <script>
+    $(document).on('turbolinks:load', function() {
+    $('#post_raty').empty();
+    let elem = document.querySelector('#post_raty');
+    let opt = {
+      number: 5,
+      starOff:  '/assets/star-off.png',    //imagesフォルダより星画像の呼び出し
+      starOn:  '/assets/star-on.png',
+      starHalf:  '/assets/star-half.png',
+      scoreName:  'book[star]',
+      half: true,
+    };
+    raty(elem,opt);
+    });
+  </script>
