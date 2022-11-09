@@ -1,9 +1,10 @@
 <div id="star_<%= book.id %>"></div>
 <script>
-$(document).on('turbolinks:load', function() {
+    $(document).on('turbolinks:load', function() {
+    $('#star_<%= book.id %>').empty();
     let star_<%= book.id %> = document.querySelector('#star_<%= book.id %>');
     star_<%= book.id %>.innerHTML = ""
-    let opt_<%= book.id %> = {  
+    let opt_<%= book.id %> = {
         starOn: "<%= asset_path('star-on.png') %>",
         starOff: "<%= asset_path('star-off.png') %>",
         starHalf: "<%= asset_path('star-half.png') %>",
@@ -11,5 +12,5 @@ $(document).on('turbolinks:load', function() {
         readOnly: true,
       };
     raty(star_<%= book.id %> ,opt_<%= book.id %>);
-});
+    });
 </script>
