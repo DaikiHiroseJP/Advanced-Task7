@@ -31,6 +31,13 @@ class BooksController < ApplicationController
   end
 
   def index
+    if params[:latest]
+      @books = Book.latest
+    elsif params[:old]
+      @books = Book.old
+    elsif params[:star_count]
+      @books = Book.star_count
+    elsif params[:favorite_week]
     to  = Time.current.at_end_of_day
     from  = (to - 6.day).at_beginning_of_day
     @books = Book.includes(:favorited_users)
@@ -38,6 +45,9 @@ class BooksController < ApplicationController
       b.favorite.where(created_at: from...to).size <=>
       a.favorite.where(created_at: from...to).size
     }
+    else
+      @books = Book.all
+    end
     @book = Book.new
 
   end
