@@ -7,6 +7,7 @@ class Book < ApplicationRecord
 
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
+  validates :category,presence:true,length:{maximum:28}
 
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日
   scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) } # 前日
@@ -33,5 +34,9 @@ class Book < ApplicationRecord
     else
       @book = Book.all
     end
+  end
+
+  def self.search(search_word)
+    Book.where(['category LIKE ?', "#{search_word}"])
   end
 end

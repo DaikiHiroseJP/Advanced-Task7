@@ -1,24 +1,4 @@
-  <% if @range == "User" %>
-  <h2>Users search for"<%= params[:word] %>"</h2>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>image</th>
-          <th>name</th>
-          <th colspan="10"></th>
-        </tr>
-      </thead>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
-            <td><%= user.name %></td>
-            <td><%= link_to 'Show', user %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-  <h2>Books search for"<%= params[:word] %>"</h2>
+<h2>Books search for"<%= params[:keyword] %>"</h2>
     <table class='table'>
       <thead>
         <tr>
@@ -33,7 +13,7 @@
         <% @books.each do |book| %>
           <tr>
             <td>
-              <%= link_to(book.user)  do %>
+              <%= link_to(book.user) do %>
               <%= image_tag book.user.get_profile_image, size:'50x50' %>
               <% end %>
             </td>
@@ -49,4 +29,3 @@
         <% end %>
       </tbody>
     </table>
-  <% end %>
