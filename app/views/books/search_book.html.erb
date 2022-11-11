@@ -14,7 +14,7 @@
           <tr>
             <td>
               <%= link_to(book.user) do %>
-              <%= image_tag book.user.get_profile_image, size:'50x50' %>
+              <%= image_tag book.user.get_profile_image, size:'50x50', 'data-turbolinks': false %>
               <% end %>
             </td>
             <td><%= link_to book.title,book, 'data-turbolinks': false %></td>
