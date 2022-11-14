@@ -1,34 +1,36 @@
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th>Tag　　</th>
-      <th colspan="8"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% books.each do |book| %>
+<div class="table-responsive">
+  <table class='table table-hover table-inverse'>
+    <thead>
       <tr>
-        <td><%= link_to(book.user) do %>
-          <%= image_tag book.user.get_profile_image, size:'50x50', 'data-turbolinks': false %>
-          <% end %>
-        </td>
-        <td><%= link_to book.title,book ,'data-turbolinks': false %></td>
-        <td><%= book.body %></td>
-        <td>
-          <% if book.category === nil %>
-            no tag
-          <% else %>
-            <%= link_to book.category, search_book_path(keyword: book.category), 'data-turbolinks': false %>
-          <% end %>
-        </td>
-        <td><%= render 'favorites/favorite', book: book %></td>
-        <td>コメント数: <%= book.book_comments.count %></td>
-        <td><p class="view-count">閲覧数: <%= book.view_counts.count %></p></td>
-        <td><%= render "books/static_rate", book: book %></td>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th>Tag　　</th>
+        <th colspan="8"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% books.each do |book| %>
+        <tr>
+          <td><%= link_to(book.user) do %>
+            <%= image_tag book.user.get_profile_image, size:'50x50', 'data-turbolinks': false %>
+            <% end %>
+          </td>
+          <td><%= link_to book.title,book ,'data-turbolinks': false %></td>
+          <td><%= book.body %></td>
+          <td>
+            <% if book.category === nil %>
+              no tag
+            <% else %>
+              <%= link_to book.category, search_book_path(keyword: book.category), 'data-turbolinks': false %>
+            <% end %>
+          </td>
+          <td><%= render 'favorites/favorite', book: book %></td>
+          <td>コメント数: <%= book.book_comments.count %></td>
+          <td><p class="view-count">閲覧数: <%= book.view_counts.count %></p></td>
+          <td><%= render "books/static_rate", book: book %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
