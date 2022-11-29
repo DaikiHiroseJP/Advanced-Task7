@@ -58,3 +58,4 @@ gem 'devise'
 gem "jquery-rails"
 gem "chartkick"
 gem 'dotenv-rails'
+gem 'kaminari','~> 1.2.1'
